@@ -1,4 +1,11 @@
 
 {
-    "gcm_sender_id": "667554453339"
+    "name": "CleverTap Integration",
+    "short_name": "CT Int",
+    "start_url": "/CleverTapWeb/index.html",
+    "display": "standalone",
+    "gcm_sender_id": "667554453339",
+    "permissions": [
+        "gcm"
+    ]
   }
