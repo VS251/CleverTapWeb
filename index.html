@@ -10,6 +10,12 @@
     <script type="text/javascript">
         var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
         clevertap.account.push({"id": "Z44-Z4K-K65Z"});
+
+        clevertap.notifications.push({
+            "serviceWorkerPath": "/CleverTapWeb/clevertap_sw.js",
+            "serviceWorkerScope": "/CleverTapWeb/", 
+        });
+
         (function () {
             var wzrk = document.createElement('script');
             wzrk.type = 'text/javascript';
@@ -19,25 +25,19 @@
             s.parentNode.insertBefore(wzrk, s);
         })();
 
-        clevertap.notifications.push({
-            "serviceWorkerPath": "/CleverTapWeb/clevertap_sw.js",
-            "serviceWorkerScope": "/CleverTapWeb/" 
-        });
-
         if ('serviceWorker' in navigator) {
-    console.log('Service Worker is supported');
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/Pushnotification/clevertap_sw.js', {scope: '/Pushnotification/'})
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/CleverTapWeb/clevertap_sw.js', {
+                scope: '/CleverTapWeb/'
             })
-            .catch(function(err) {
-                console.log('ServiceWorker registration failed: ', err);
+            .then(function(registration) {
+                console.log('ServiceWorker registration successful:', registration);
+            })
+            .catch(function(error) {
+                console.log('ServiceWorker registration failed:', error);
             });
-    });
-} else {
-    console.log('Service Worker is not supported');
-}
+        });
+    }
     </script>
 </head>
 <body>
